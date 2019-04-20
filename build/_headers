@@ -1,0 +1,6 @@
+find `pwd` -type f |grep  -v \\. |sed "s#`pwd`/##" > list
+for i in `cat list`; do
+  echo "/$i" >> _headers;
+  echo "  Content-Type: text/html" >> _headers;
+done
+rm list

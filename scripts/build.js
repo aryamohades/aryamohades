@@ -37,6 +37,28 @@ const renderMap = {
   projects: buildProjects,
 };
 
+function getMinifiedHtml($) {
+  return minifyHtml($.html(), {
+    minifyCSS: true,
+    minifyJS: true,
+    collapseBooleanAttributes: true,
+    collapseInlineTagWhitespace: true,
+    collapseWhitespace: true,
+    minifyURLs: true,
+    removeAttributeQuotes: true,
+    removeComments: true,
+    removeEmptyAttributes: true,
+    removeEmptyElements: true,
+    removeOptionalTags: true,
+    removeRedundantAttributes: true,
+    removeScriptTypeAttributes: true,
+    removeStyleLinkTypeAttributes: true,
+    removeTagWhitespace: true,
+    sortAttributes: true,
+    sortClassName: true,
+  });
+}
+
 function buildPage(page, options) {
   options = Object.assign(
     {
@@ -55,29 +77,7 @@ function buildPage(page, options) {
 
   pagesAdded.add(options.file);
 
-  fs.writeFileSync(
-    path.join(BUILD_PATH, options.file),
-    minifyHtml($.html(), {
-      minifyCSS: true,
-      minifyJS: true,
-      collapseBooleanAttributes: true,
-      collapseInlineTagWhitespace: true,
-      collapseWhitespace: true,
-      minifyURLs: true,
-      removeAttributeQuotes: true,
-      removeComments: true,
-      removeEmptyAttributes: true,
-      removeEmptyElements: true,
-      removeOptionalTags: true,
-      removeRedundantAttributes: true,
-      removeScriptTypeAttributes: true,
-      removeStyleLinkTypeAttributes: true,
-      removeTagWhitespace: true,
-      sortAttributes: true,
-      sortClassName: true,
-      useShortDoctype: true,
-    }),
-  );
+  fs.writeFileSync(path.join(BUILD_PATH, options.file), getMinifiedHtml($));
 }
 
 function buildMeta(meta, $) {
@@ -305,7 +305,7 @@ function compilePosts() {
 
     pagesAdded.add(post.file);
 
-    fs.writeFileSync(path.join(BUILD_PATH, post.file), $.html());
+    fs.writeFileSync(path.join(BUILD_PATH, post.file), getMinifiedHtml($));
   });
 }
 
