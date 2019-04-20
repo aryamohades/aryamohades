@@ -6,12 +6,7 @@
   border: 1px solid #ddd;
   border-radius: 0.4em;
   padding: 0 .3em;
-}
-
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin: 0 1px;
 }
 
 .post-detail {
@@ -21,33 +16,22 @@
   text-align: left;
 }
 
-.post-detail .back {
+.back {
   display: block;
-  font-size: 14px;
-  margin-bottom: 12px;
+  font-size: 16px;
+  margin-bottom: 6px;
 }
 
-.post-detail .title {
+.post-title {
   font-size: 36px;
   font-weight: bold;
   margin-bottom: 4px;
 }
 
-.post-detail .date {
-  font-size: 16px;
-  color: #666;
-}
-
-.post-detail .content {
+.post-content {
   margin-top: 20px;
   display: flex;
   flex-direction: column;
-}
-
-.post-detail h4 {
-  font-size: 24px;
-  margin: 0;
-  margin-top: 25px;
 }
 
 @media(max-width: 650px) {
@@ -55,15 +39,15 @@
     margin-top: 25px;
   }
 
-  .post-detail .title {
+  .post-title {
     font-size: 26px;
   }
 
-  .post-detail h4 {
+  h3 {
     font-size: 20px;
   }
 
-  .post-detail p {
+  p {
     font-size: 16px;
   }
 }

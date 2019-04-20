@@ -40,6 +40,12 @@ h1 {
   font-size: 28px;
 }
 
+h3 {
+  font-size: 24px;
+  margin: 0;
+  margin-top: 20px;
+}
+
 h5 {
   margin: 0;
   font-weight: 400;
@@ -51,7 +57,7 @@ h5 {
 .header {
   display: flex;
   align-items: center;
-  padding: 20px 25px;
+  padding: 20px 45px;
   border-bottom: 1px solid #e3e3e3;
 }
 
@@ -60,11 +66,11 @@ h5 {
   font-weight: 700;
   color: #333;
   text-decoration: none;
-  margin-right: 10px;
+  margin-right: 20px;
 }
 
-.header a {
-  margin: 0 8px;
+.header .links a {
+  margin: 0 10px;
 }
 
 .body {
@@ -82,7 +88,7 @@ h5 {
   border-top: 1px solid #e3e3e3;
 }
 
-.footer a {
+.footer .links a {
   margin: 0 8px;
 }
 
@@ -96,17 +102,18 @@ h5 {
   color: #666;
 }
 
-@media(max-width: 650px) {
+@media(max-width: 725px) {
   .body {
     padding: 25px 35px;
   }
 
   .header {
+    padding: 20px 30px;
     justify-content: space-between;
   }
 }
 
-@media(max-width: 475px) {
+@media(max-width: 550px) {
   .body {
     padding: 25px;
   }
@@ -116,7 +123,12 @@ h5 {
   }
 
   .header .title {
-    margin-bottom: 8px;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .header a {
+    font-size: 18px;
   }
 
   .footer .links {
@@ -125,7 +137,8 @@ h5 {
     text-align: center;
   }
 
-  .footer a {
-    margin: 4px 0;
+  .footer .links a {
+    font-size: 18px;
+    margin: 10px 0;
   }
 }

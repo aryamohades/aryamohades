@@ -52,8 +52,6 @@ function getMinifiedHtml($) {
     minifyCSS: true,
     minifyJS: true,
     collapseBooleanAttributes: true,
-    collapseInlineTagWhitespace: true,
-    collapseWhitespace: true,
     minifyURLs: true,
     removeAttributeQuotes: true,
     removeComments: true,
@@ -273,7 +271,7 @@ function buildProjects(data, $) {
 }
 
 const postRenderMap = {
-  header: (data, $) => $(`<h4>${data.value}</h4>`),
+  header: (data, $) => $(`<h3>${data.value}</h3>`),
   paragraph: (data, $) => $(`<p>${data.value}</p>`),
   code: (data, $) =>
     $(
@@ -294,14 +292,13 @@ function compilePosts() {
     buildMeta(post.meta, $);
     buildHeader($);
     buildFooter($);
-    buildStyle('post-detail.css', $);
+    buildStyle('post.css', $);
 
-    const wrapperElem = $('<div class="wrapper"></div>');
     const detailElem = $('<div class="post-detail"></div>');
-    const contentElem = $('<div class="content"></div>');
+    const contentElem = $('<div class="post-content"></div>');
 
     detailElem.append('<a href="/" class="back">Back</a>');
-    detailElem.append(`<div class="title">${post.title}</div>`);
+    detailElem.append(`<div class="post-title">${post.title}</div>`);
     detailElem.append(`<div class="date">${post.date}</div>`);
 
     post.content.forEach(element => {
@@ -309,8 +306,7 @@ function compilePosts() {
     });
 
     detailElem.append(contentElem);
-    wrapperElem.append(detailElem);
-    bodyElem.append(wrapperElem);
+    bodyElem.append(detailElem);
 
     if (post.stylesheets) {
       post.stylesheets.forEach(stylesheet => {
