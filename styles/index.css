@@ -1,0 +1,19 @@
+.posts {
+  margin-top: 25px;
+}
+
+.post {
+  margin-bottom: 8px;
+}
+
+.post .title {
+  font-size: 18px;
+  display: block;
+  max-width: 475px;
+  margin-bottom: 4px;
+}
+
+.post .date {
+  font-size: 14px;
+  color: #666;
+}

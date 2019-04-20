@@ -1,0 +1,6 @@
+{
+  "events": {
+    "start": "yarn run build"
+  },
+  "ext": "js css html json"
+}
