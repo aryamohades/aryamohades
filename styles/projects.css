@@ -14,8 +14,9 @@
 .project .description {
   font-size: 14px;
   max-width: 350px;
+  margin-bottom: 6px;
 }
 
 .project .link {
-  margin-top: 8px;
+  margin: 2px 0;
 }

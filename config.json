@@ -70,6 +70,12 @@
             "description": "Open-source server for realtime multiplayer games",
             "website": "https://www.makeshiftsoftware.com",
             "source": "https://www.github.com/makeshiftsoftware/vsnet"
+          },
+          {
+            "name": "VsNet",
+            "description": "Open-source server for realtime multiplayer games",
+            "website": "https://www.makeshiftsoftware.com",
+            "source": "https://www.github.com/makeshiftsoftware/vsnet"
           }
         ]
       }
