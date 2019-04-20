@@ -280,9 +280,9 @@ const postRenderMap = {
   paragraph: (data, $) => $(`<p>${data.value}</p>`),
   code: (data, $) =>
     $(
-      `<div class="code-block"><pre><code class="language-${data.syntax}">${fs.readFileSync(
+      `<pre><code class="language-${data.syntax}">${fs.readFileSync(
         path.join(SNIPPETS_PATH, data.snippet),
-      )}</code></pre></div>`,
+      )}</code></pre>`,
     ),
 };
 
