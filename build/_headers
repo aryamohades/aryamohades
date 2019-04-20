@@ -1,2 +1,15 @@
+/another-post
+	Content-Type: text/html
+
+/hello
+	Content-Type: text/html
+
 /index
-  Content-Type: text/html
+	Content-Type: text/html
+
+/about
+	Content-Type: text/html
+
+/projects
+	Content-Type: text/html
+

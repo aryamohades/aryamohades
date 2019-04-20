@@ -27,6 +27,7 @@ const posts = fs
   .reverse()
   .map(file => JSON.parse(fs.readFileSync(path.join(POSTS_PATH, file))));
 
+const ignoreFiles = new Set(['_headers', '_redirects']);
 const stylesheetsAdded = new Set();
 const scriptsAdded = new Set();
 const pagesAdded = new Set();
@@ -57,6 +58,17 @@ function getMinifiedHtml($) {
     sortAttributes: true,
     sortClassName: true,
   });
+}
+
+function buildHeadersFile() {
+  const headers = Array.from(pagesAdded).reduce((acc, page) => {
+    acc += `/${page}\n`;
+    acc += `\tContent-Type: text/html\n\n`;
+
+    return acc;
+  }, '');
+
+  fs.writeFileSync(path.join(BUILD_PATH, '_headers'), headers);
 }
 
 function buildPage(page, options) {
@@ -316,9 +328,13 @@ function build() {
     buildPage(page);
   });
 
+  buildHeadersFile();
+
   fs.readdirSync(BUILD_PATH).forEach(file => {
     if (!pagesAdded.has(file) && !stylesheetsAdded.has(file) && !scriptsAdded.has(file)) {
-      fs.unlinkSync(path.join(BUILD_PATH, file));
+      if (!ignoreFiles.has(file)) {
+        fs.unlinkSync(path.join(BUILD_PATH, file));
+      }
     }
   });
 }
