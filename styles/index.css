@@ -1,19 +1,13 @@
-.posts {
-  margin-top: 25px;
-}
-
 .post {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
-.post .title {
-  font-size: 18px;
-  display: block;
-  max-width: 475px;
-  margin-bottom: 4px;
-}
+@media(max-width: 650px) {
+  .post {
+    margin-bottom: 20px;
+  }
 
-.post .date {
-  font-size: 14px;
-  color: #666;
+  .post h5 {
+    font-size: 18px;
+  }
 }

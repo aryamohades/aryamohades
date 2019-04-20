@@ -17,6 +17,7 @@
     },
     {
       "name": "about",
+      "style": "about.css",
       "meta": {
         "title": "About - Arya Mohades",
         "description": "about Arya Mohades",

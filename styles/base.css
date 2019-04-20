@@ -17,8 +17,13 @@ p {
   font-size: 18px;
 }
 
+ul {
+  margin-top: 0;
+  padding-left: 30px;
+}
+
 ul > li {
-  margin-bottom: 3px;
+  margin-bottom: 5px;
 }
 
 a {
@@ -29,6 +34,18 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+h1 {
+  font-size: 28px;
+}
+
+h5 {
+  margin: 0;
+  font-weight: 400;
+  font-size: 16px;
+  max-width: 475px;
+  margin-bottom: 3px;
 }
 
 .header {
@@ -52,6 +69,8 @@ a:hover {
 
 .body {
   flex: 1;
+  display: flex;
+  flex-direction: column;
   padding: 25px 60px;
   padding-top: 0;
 }
@@ -65,6 +84,16 @@ a:hover {
 
 .footer a {
   margin: 0 8px;
+}
+
+.page-title {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.date {
+  font-size: 14px;
+  color: #666;
 }
 
 @media(max-width: 650px) {

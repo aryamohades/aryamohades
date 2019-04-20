@@ -82,10 +82,6 @@ function buildHeadersFile() {
   fs.writeFileSync(path.join(BUILD_PATH, '_headers'), headers);
 }
 
-function buildRedirectsFile() {
-  fs.writeFileSync(path.join(BUILD_PATH, '_redirects'), '/* /index 200');
-}
-
 function buildPage(page, options) {
   options = Object.assign(
     {
@@ -223,11 +219,12 @@ function buildIndex(data, $) {
 
   posts.forEach(post => {
     const postElem = $('<div class="post"></div>');
-    postElem.append(`<a href="/${post.file}" class="title">${post.title}</a>`);
+    postElem.append(`<h5><a href="/${post.file}">${post.title}</a></h5>`);
     postElem.append(`<div class="date">${post.date}</div>`);
     postsElem.append(postElem);
   });
 
+  bodyElem.append(`<h1>${data.header}</h1>`);
   bodyElem.append(postsElem);
 }
 
@@ -245,7 +242,7 @@ function buildAbout(data, $) {
     linksElem.append(linkElem);
   });
 
-  bodyElem.append(`<h2>${data.header}</h2>`);
+  bodyElem.append(`<h1>${data.header}</h1>`);
   bodyElem.append(`<p>${data.about}</p>`);
   bodyElem.append(linksElem);
 }
@@ -271,7 +268,7 @@ function buildProjects(data, $) {
     projectsElem.append(projectElem);
   });
 
-  bodyElem.append(`<h2>${data.header}</h2>`);
+  bodyElem.append(`<h1>${data.header}</h1>`);
   bodyElem.append(projectsElem);
 }
 
@@ -345,7 +342,6 @@ function build() {
 
   copyImages();
   buildHeadersFile();
-  buildRedirectsFile();
 
   fs.readdirSync(BUILD_PATH).forEach(file => {
     if (
