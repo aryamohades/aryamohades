@@ -5,7 +5,7 @@
   "author": "aryamohades",
   "license": "MIT",
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=8.5.0"
   },
   "scripts": {
     "dev": "nodemon --ignore build scripts/dev.js",

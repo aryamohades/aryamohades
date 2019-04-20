@@ -13,6 +13,7 @@ const TEMPLATES_PATH = path.join(__dirname, '../templates');
 const STYLES_PATH = path.join(__dirname, '../styles');
 const SCRIPTS_PATH = path.join(__dirname, '../js');
 const SNIPPETS_PATH = path.join(__dirname, '../snippets');
+const IMAGES_PATH = path.join(__dirname, '../images');
 const POSTS_PATH = path.join(__dirname, '../posts');
 const BASE_TEMPLATE = 'base.html';
 const BASE_STYLE = 'base.css';
@@ -31,12 +32,20 @@ const ignoreFiles = new Set(['_headers', '_redirects']);
 const stylesheetsAdded = new Set();
 const scriptsAdded = new Set();
 const pagesAdded = new Set();
+const imagesAdded = new Set();
 
 const renderMap = {
   index: buildIndex,
   about: buildAbout,
   projects: buildProjects,
 };
+
+function copyImages() {
+  fs.readdirSync(IMAGES_PATH).forEach(image => {
+    fs.copyFileSync(path.join(IMAGES_PATH, image), path.join(BUILD_PATH, image));
+    imagesAdded.add(image);
+  });
+}
 
 function getMinifiedHtml($) {
   return minifyHtml($.html(), {
@@ -61,14 +70,20 @@ function getMinifiedHtml($) {
 }
 
 function buildHeadersFile() {
-  const headers = Array.from(pagesAdded).reduce((acc, page) => {
+  let headers = Array.from(pagesAdded).reduce((acc, page) => {
     acc += `/${page}\n`;
     acc += `\tContent-Type: text/html\n\n`;
 
     return acc;
   }, '');
 
+  headers = `/\n\tContent-Type: text/html\n\n` + headers;
+
   fs.writeFileSync(path.join(BUILD_PATH, '_headers'), headers);
+}
+
+function buildRedirectsFile() {
+  fs.writeFileSync(path.join(BUILD_PATH, '_redirects'), '/* /index 200');
 }
 
 function buildPage(page, options) {
@@ -328,10 +343,17 @@ function build() {
     buildPage(page);
   });
 
+  copyImages();
   buildHeadersFile();
+  buildRedirectsFile();
 
   fs.readdirSync(BUILD_PATH).forEach(file => {
-    if (!pagesAdded.has(file) && !stylesheetsAdded.has(file) && !scriptsAdded.has(file)) {
+    if (
+      !pagesAdded.has(file) &&
+      !stylesheetsAdded.has(file) &&
+      !scriptsAdded.has(file) &&
+      !imagesAdded.has(file)
+    ) {
       if (!ignoreFiles.has(file)) {
         fs.unlinkSync(path.join(BUILD_PATH, file));
       }
