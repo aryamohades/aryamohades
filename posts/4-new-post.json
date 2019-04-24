@@ -1,0 +1,25 @@
+{
+  "file": "new-post",
+  "title": "This is a new post",
+  "date": "4/24/2018",
+  "meta": {
+    "description": "This is goblin's post"
+  },
+  "stylesheets": ["prism.css"],
+  "js": ["javascript.js"],
+  "content": [
+    {
+      "type": "header",
+      "value": "New Post"
+    },
+    {
+      "type": "paragraph",
+      "value": "This is new paragraph."
+    },
+    {
+      "type": "code",
+      "snippet": "example.js",
+      "syntax": "javascript"
+    }
+  ]
+}
