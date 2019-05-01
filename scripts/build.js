@@ -16,9 +16,17 @@ const renderPage = {
 };
 
 function buildHeadersFile() {
-  let headers = fs.readdirSync(BUILD_PATH).reduce((acc, page) => {
-    acc += `/${page}\n`;
-    acc += `\tContent-Type: text/html\n\n`;
+  let headers = fs.readdirSync(BUILD_PATH).reduce((acc, file) => {
+    let contentType = 'text/html';
+
+    if (file.endsWith('.css')) {
+      contentType = 'text/css';
+    } else if (file.endsWith('.js')) {
+      contentType = 'text/javascript';
+    }
+
+    acc += `/${file}\n`;
+    acc += `\tContent-Type: ${contentType}\n\n`;
 
     return acc;
   }, '');

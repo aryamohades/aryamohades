@@ -5,7 +5,7 @@
 	Content-Type: text/html
 
 /base.css
-	Content-Type: text/html
+	Content-Type: text/css
 
 /hello
 	Content-Type: text/html
@@ -14,10 +14,10 @@
 	Content-Type: text/html
 
 /javascript-syntax.js
-	Content-Type: text/html
+	Content-Type: text/javascript
 
 /prism.css
-	Content-Type: text/html
+	Content-Type: text/css
 
 /projects
 	Content-Type: text/html
