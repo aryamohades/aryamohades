@@ -26,7 +26,7 @@
       },
       "data": {
         "header": "About me",
-        "about": "My name is Arya and I like code and goblin",
+        "about": "Yo",
         "links": [
           {
             "label": "Email",
@@ -62,19 +62,7 @@
         "projects": [
           {
             "name": "VsNet",
-            "description": "Open-source server for realtime multiplayer games",
-            "website": "https://www.makeshiftsoftware.com",
-            "source": "https://www.github.com/makeshiftsoftware/vsnet"
-          },
-          {
-            "name": "VsNet",
-            "description": "Open-source server for realtime multiplayer games",
-            "website": "https://www.makeshiftsoftware.com",
-            "source": "https://www.github.com/makeshiftsoftware/vsnet"
-          },
-          {
-            "name": "VsNet",
-            "description": "Open-source server for realtime multiplayer games",
+            "description": "Server for social, online multiplayer games",
             "website": "https://www.makeshiftsoftware.com",
             "source": "https://www.github.com/makeshiftsoftware/vsnet"
           }

@@ -1,22 +1,13 @@
 /
 	Content-Type: text/html
 
-/new-post
-	Content-Type: text/html
-
-/goblin
-	Content-Type: text/html
-
-/another-post
+/about
 	Content-Type: text/html
 
 /hello
 	Content-Type: text/html
 
 /index
-	Content-Type: text/html
-
-/about
 	Content-Type: text/html
 
 /projects

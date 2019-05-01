@@ -1,41 +1,18 @@
 {
   "file": "hello",
-  "title": "Hello world, this is a post",
+  "title": "Hello world",
   "date": "4/19/2018",
   "meta": {
-    "description": "This is my first post"
+    "description": "Hello world"
   },
-  "stylesheets": ["prism.css"],
-  "js": ["javascript.js"],
   "content": [
     {
       "type": "header",
-      "value": "A Header"
+      "value": "Header"
     },
     {
       "type": "paragraph",
-      "value": "Paragraph 1 content. A lot more content. This is some more content. So much content wow. I'm going to write some <code>code</code>"
-    },
-    {
-      "type": "paragraph",
-      "value": "Paragraph 2 content. A link <a href=\"https://www.google.com\">google</a>"
-    },
-    {
-      "type": "code",
-      "syntax": "javascript",
-      "snippet": "example.js"
-    },
-    {
-      "type": "paragraph",
-      "value": "The <code class=\"code\">hostNetwork</code> setting applies to the Kubernetes pods. When a pod is configured with hostNetwork: true, the applications running in such a pod can directly see the network interfaces of the host machine where the pod was started. An application that is configured to listen on all network interfaces will in turn be accessible on all network interfaces of the host machine. Here is an example definition of a pod that uses host networking:"
-    },
-    {
-      "type": "header",
-      "value": "A Header"
-    },
-    {
-      "type": "paragraph",
-      "value": "Paragraph 1 content. A lot more content. This is some more content. So much content wow. I'm going to write some <code>code</code>"
+      "value": "Paragraph content."
     }
   ]
 }
