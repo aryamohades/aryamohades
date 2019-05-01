@@ -1,24 +1,15 @@
 {
-  "name": "aryamohades",
+  "name": "yee",
   "version": "1.0.0",
-  "description": "Arya Mohades blog",
-  "author": "aryamohades",
-  "license": "MIT",
+  "description": "Website",
+  "author": "Arya Mohades",
+  "license": "UNLICENSED",
   "engines": {
     "node": ">=8.5.0"
   },
   "scripts": {
     "dev": "nodemon --ignore ./build scripts/dev.js",
     "build": "node scripts/build.js"
-  },
-  "devDependencies": {
-    "eslint": "^5.15.3",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-config-prettier": "^4.1.0",
-    "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-node": "^8.0.1",
-    "eslint-plugin-prettier": "^3.0.1",
-    "prettier": "^1.16.4"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
@@ -27,5 +18,15 @@
     "html-minifier": "^4.0.0",
     "mkdirp": "^0.5.1",
     "uglify-js": "^3.5.5"
+  },
+  "devDependencies": {
+    "eslint": "^5.15.3",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "nodemon": "^1.19.0",
+    "prettier": "^1.16.4"
   }
 }

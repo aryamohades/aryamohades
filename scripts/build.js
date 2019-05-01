@@ -3,32 +3,13 @@ const fs = require('fs');
 const path = require('path');
 const cheerio = require('cheerio');
 const mkdirp = require('mkdirp');
+const { copyImages, minifyHTML } = require('./utils');
+const { buildHeader, buildFooter, buildMeta, buildStyle } = require('./common');
+const { home, about, projects } = require('./pages');
 const compilePosts = require('./compile-posts');
-const copyImages = require('./copy-images');
-const minifyHtml = require('./minify-html');
-const buildMeta = require('./build-meta');
-const buildStyle = require('./build-style');
-const buildHeader = require('./build-header');
-const buildFooter = require('./build-footer');
-const {
-  home,
-  about,
-  projects,
-} = require('./pages');
-const {
-  CONFIG_PATH,
-  BUILD_PATH,
-  TEMPLATES_PATH,
-  STYLES_PATH,
-  SNIPPETS_PATH,
-  IMAGES_PATH,
-  SITE_CONFIG,
-  BASE_HTML,
-  BASE_STYLE,
-  IGNORE_FILES,
-} = require('./constants');
+const { BUILD_PATH, SITE_CONFIG, BASE_HTML } = require('./constants');
 
-const renderMap = {
+const renderPage = {
   index: home,
   about: about,
   projects: projects,
@@ -47,6 +28,12 @@ function buildHeadersFile() {
   fs.writeFileSync(path.join(BUILD_PATH, '_headers'), headers);
 }
 
+function buildPages() {
+  SITE_CONFIG.pages.forEach(page => {
+    buildPage(page);
+  });
+}
+
 function buildPage(page, options) {
   options = Object.assign(
     {
@@ -61,19 +48,13 @@ function buildPage(page, options) {
   buildHeader($);
   buildFooter($);
   buildStyle(page.style, $);
-  renderMap[page.name](page.data, $);
-  fs.writeFileSync(path.join(BUILD_PATH, options.file), minifyHtml($));
+  renderPage[page.name](page.data, $);
+  fs.writeFileSync(path.join(BUILD_PATH, options.file), minifyHTML($));
 }
 
 function cleanBuildDirectory() {
   fs.readdirSync(BUILD_PATH).forEach(file => {
     fs.unlinkSync(path.join(BUILD_PATH, file));
-  });
-}
-
-function buildPages() {
-  SITE_CONFIG.pages.forEach(page => {
-    buildPage(page);
   });
 }
 

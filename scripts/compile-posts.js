@@ -1,28 +1,17 @@
 const fs = require('fs');
 const path = require('path');
 const cheerio = require('cheerio');
-const posts = require('./get-posts');
-const { BUILD_PATH, SITE_CONFIG, BASE_HTML, SNIPPETS_PATH } = require('./constants');
-const minifyHtml = require('./minify-html');
-const addScript = require('./add-script');
-const addStylesheet = require('./add-stylesheet');
-const buildMeta = require('./build-meta');
-const buildStyle = require('./build-style');
-const buildHeader = require('./build-header');
-const buildFooter = require('./build-footer');
+const { posts } = require('./utils');
+const { BUILD_PATH, SITE_CONFIG, BASE_HTML } = require('./constants');
+const { getSnippet, addStylesheet, addScript, minifyHTML } = require('./utils');
+const { buildHeader, buildFooter, buildMeta, buildStyle } = require('./common');
 
-const postRenderMap = {
+const renderElement = {
   header: (data, $) => $(`<h3>${data.value}</h3>`),
   paragraph: (data, $) => $(`<p>${data.value}</p>`),
   code: (data, $) =>
-    $(
-      `<pre><code class="language-${data.syntax}">${fs.readFileSync(
-        path.join(SNIPPETS_PATH, data.snippet),
-      )}</code></pre>`,
-    ),
+    $(`<pre><code class="language-${data.syntax}">${getSnippet(data.snippet)}</code></pre>`),
 };
-
-const stylesheetsAdded = new Set();
 
 module.exports = () => {
   posts.forEach(post => {
@@ -45,7 +34,7 @@ module.exports = () => {
     detailElem.append(`<div class="date">${post.date}</div>`);
 
     post.content.forEach(element => {
-      contentElem.append(postRenderMap[element.type](element, $));
+      contentElem.append(renderElement[element.type](element, $));
     });
 
     detailElem.append(contentElem);
@@ -66,6 +55,6 @@ module.exports = () => {
       });
     }
 
-    fs.writeFileSync(path.join(BUILD_PATH, post.file), minifyHtml($));
+    fs.writeFileSync(path.join(BUILD_PATH, post.file), minifyHTML($));
   });
 };

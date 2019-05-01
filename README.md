@@ -1,7 +1,6 @@
-# aryamohades
-My website/blog
+## website
 
-Uses `config.json` in project root and the `posts/` folder to build website dynamically.
+Use `config.json` in project root and the `posts/` folder to build website.
 
 Local development:
 `yarn dev`

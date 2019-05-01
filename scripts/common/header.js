@@ -1,6 +1,6 @@
-const { SITE_CONFIG } = require('./constants');
+const { SITE_CONFIG } = require('../constants');
 
-module.exports = ($) => {
+module.exports = $ => {
   const headerConfig = SITE_CONFIG.header;
 
   if (!SITE_CONFIG.header) {

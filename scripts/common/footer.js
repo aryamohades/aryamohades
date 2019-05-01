@@ -1,6 +1,6 @@
-const { SITE_CONFIG } = require('./constants');
+const { SITE_CONFIG } = require('../constants');
 
-module.exports = ($) => {
+module.exports = $ => {
   const footerConfig = SITE_CONFIG.footer;
 
   if (!footerConfig) {
@@ -24,4 +24,4 @@ module.exports = ($) => {
   }
 
   $('body').append(footerElem);
-}
+};

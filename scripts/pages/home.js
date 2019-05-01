@@ -1,4 +1,4 @@
-const posts = require('../get-posts');
+const { posts } = require('../utils');
 
 module.exports = (data, $) => {
   const bodyElem = $('.body');
