@@ -4,10 +4,19 @@
 /about
 	Content-Type: text/html
 
+/base.css
+	Content-Type: text/html
+
 /hello
 	Content-Type: text/html
 
 /index
+	Content-Type: text/html
+
+/javascript-syntax.js
+	Content-Type: text/html
+
+/prism.css
 	Content-Type: text/html
 
 /projects

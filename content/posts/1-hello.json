@@ -5,6 +5,8 @@
   "meta": {
     "description": "Hello world"
   },
+  "scripts": ["javascript-syntax.js"],
+  "stylesheets": ["prism.css"],
   "content": [
     {
       "type": "header",
@@ -13,6 +15,11 @@
     {
       "type": "paragraph",
       "value": "Paragraph content."
+    },
+    {
+      "type": "code",
+      "snippet": "example.js",
+      "syntax": "javascript"
     }
   ]
 }

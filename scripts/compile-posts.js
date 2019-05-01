@@ -3,9 +3,10 @@ const path = require('path');
 const cheerio = require('cheerio');
 const { posts } = require('./utils');
 const { BUILD_PATH, SITE_CONFIG, BASE_HTML } = require('./constants');
-const { getSnippet, addStylesheet, addScript, minifyHTML } = require('./utils');
-const { buildHeader, buildFooter, buildMeta, buildStyle } = require('./common');
+const { getSnippet, addStylesheet, addScript, addStyle, minifyHTML } = require('./utils');
+const { buildHeader, buildFooter, buildMeta } = require('./common');
 
+// code data.syntax values: javascript | rust | python | docker | ...
 const renderElement = {
   header: (data, $) => $(`<h3>${data.value}</h3>`),
   paragraph: (data, $) => $(`<p>${data.value}</p>`),
@@ -24,7 +25,7 @@ module.exports = () => {
     buildMeta(post.meta, $);
     buildHeader($);
     buildFooter($);
-    buildStyle('post.css', $);
+    addStyle($);
 
     const detailElem = $('<div class="post-detail"></div>');
     const contentElem = $('<div class="post-content"></div>');
@@ -48,8 +49,10 @@ module.exports = () => {
 
         addStylesheet(stylesheet);
       });
+    }
 
-      post.js.forEach(script => {
+    if (post.scripts) {
+      post.scripts.forEach(script => {
         headElem.append(`<script async defer src="/${script}"></script>`);
         addScript(script);
       });

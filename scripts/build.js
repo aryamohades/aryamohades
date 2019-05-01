@@ -3,8 +3,8 @@ const fs = require('fs');
 const path = require('path');
 const cheerio = require('cheerio');
 const mkdirp = require('mkdirp');
-const { copyImages, minifyHTML } = require('./utils');
-const { buildHeader, buildFooter, buildMeta, buildStyle } = require('./common');
+const { copyImages, minifyHTML, addStyle, addStylesheet } = require('./utils');
+const { buildHeader, buildFooter, buildMeta } = require('./common');
 const { home, about, projects } = require('./pages');
 const compilePosts = require('./compile-posts');
 const { BUILD_PATH, SITE_CONFIG, BASE_HTML } = require('./constants');
@@ -47,7 +47,7 @@ function buildPage(page, options) {
   buildMeta(page.meta, $);
   buildHeader($);
   buildFooter($);
-  buildStyle(page.style, $);
+  addStyle($);
   renderPage[page.name](page.data, $);
   fs.writeFileSync(path.join(BUILD_PATH, options.file), minifyHTML($));
 }
@@ -64,6 +64,7 @@ function build() {
       console.error(err);
     } else {
       cleanBuildDirectory();
+      addStylesheet('base.css');
       compilePosts();
       buildPages();
       copyImages();

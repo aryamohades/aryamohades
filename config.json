@@ -4,7 +4,6 @@
   "pages": [
     {
       "name": "index",
-      "style": "index.css",
       "meta": {
         "title": "Arya Mohades",
         "description": "Arya Mohades blog",
@@ -17,7 +16,6 @@
     },
     {
       "name": "about",
-      "style": "about.css",
       "meta": {
         "title": "About - Arya Mohades",
         "description": "about Arya Mohades",
@@ -26,7 +24,7 @@
       },
       "data": {
         "header": "About me",
-        "about": "Yo",
+        "about": "About me",
         "links": [
           {
             "label": "Email",
@@ -39,10 +37,6 @@
           },
           {
             "text": "Makeshift Software",
-            "url": "https://www.makeshiftsoftware.com"
-          },
-          {
-            "text": "Open source",
             "url": "https://www.github.com/makeshiftsoftware"
           }
         ]
@@ -50,7 +44,6 @@
     },
     {
       "name": "projects",
-      "style": "projects.css",
       "meta": {
         "title": "Projects - Arya Mohades",
         "description": "Arya Mohades projects",
@@ -61,10 +54,10 @@
         "header": "Projects",
         "projects": [
           {
-            "name": "VsNet",
-            "description": "Server for social, online multiplayer games",
+            "name": "Makeshift Software",
+            "description": "Code for social, online multiplayer games",
             "website": "https://www.makeshiftsoftware.com",
-            "source": "https://www.github.com/makeshiftsoftware/vsnet"
+            "source": "https://www.github.com/makeshiftsoftware"
           }
         ]
       }
