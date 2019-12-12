@@ -16,7 +16,7 @@ app.use((req, res, next) => {
   next();
 });
 
-const STATIC_DIR = path.join(__dirname, '../build');
+const STATIC_DIR = path.join(__dirname, 'build');
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(STATIC_DIR, 'index'));

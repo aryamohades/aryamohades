@@ -1,32 +1,44 @@
 {
-  "name": "yee",
-  "version": "1.0.0",
-  "description": "Website",
-  "author": "Arya Mohades",
+  "private": true,
   "license": "UNLICENSED",
-  "engines": {
-    "node": ">=8.5.0"
-  },
-  "scripts": {
-    "dev": "nodemon --ignore ./build scripts/dev.js",
-    "build": "node scripts/build.js"
-  },
   "dependencies": {
+    "babel-eslint": "^10.0.3",
     "cheerio": "^1.0.0-rc.3",
     "clean-css": "^4.2.1",
-    "express": "^4.16.4",
+    "eslint": "^6.7.2",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "express": "^4.17.1",
     "html-minifier": "^4.0.0",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.5.0",
     "mkdirp": "^0.5.1",
-    "uglify-js": "^3.5.5"
+    "prettier": "^1.19.1"
   },
-  "devDependencies": {
-    "eslint": "^5.15.3",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-config-prettier": "^4.1.0",
-    "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-node": "^8.0.1",
-    "eslint-plugin-prettier": "^3.0.1",
-    "nodemon": "^1.19.0",
-    "prettier": "^1.16.4"
+  "scripts": {
+    "predev": "pnpm run build",
+    "dev": "node dev.js",
+    "mkdir": "mkdirp build ",
+    "build": "pnpm run mkdir && node build.js",
+    "clean": "rm -rf build",
+    "format": "prettier --write './**/*.js'",
+    "lint": "eslint --config ./eslint.json src"
+  },
+  "engines": {
+    "node": ">=12.9.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true
   }
 }
