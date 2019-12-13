@@ -56,21 +56,13 @@ code {
 }
 
 .site-header {
-  margin-bottom: 2rem;
-}
-
-.site-header-content {
   padding: 30px;
   display: flex;
-  align-items: center;
-  width: 90%;
-  max-width: 1000px;
-  margin: 0 auto; 
+  margin-bottom: 2rem;
 }
 
 .site-title {
   color: #222;
-  margin: 0;
   font-size: 2.8rem;
   letter-spacing: -1px;
   font-weight: bold;
@@ -90,11 +82,15 @@ code {
 }
 
 @media(max-width: 768px) {
+  .site-title {
+    font-size: 2rem;
+  }
+
   .site-content {
     width: 90%;
   }
 
-  .site-header-content {
+  .site-header {
     justify-content: center;
   }
 }
