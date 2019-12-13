@@ -58,13 +58,14 @@ code {
 .site-header {
   display: flex;
   justify-content: center;
-  display: flex;
-  justify-content: flex-start;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .site-header-content {
   padding: 30px;
+  width: 90%;
+  max-width: 1200px;
+  display: flex;
 }
 
 .site-title {
@@ -89,14 +90,14 @@ code {
 
 @media(max-width: 768px) {
   .site-title {
-    font-size: 2rem;
+    font-size: 2.25rem;
   }
 
   .site-content {
     width: 90%;
   }
 
-  .site-header {
+  .site-header-content {
     justify-content: center;
   }
 }
