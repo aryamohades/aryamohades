@@ -12,7 +12,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA//8AAP//AAD4BwAA8AMAAOf5AADP/QAAn/0A
 AP//AAD//wAA4/MAAOPzAADj/wAA//8AAP//AAD//wAA" rel="icon" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;display=swap" rel="stylesheet">
 </head>
-
 <body>
   <header class="site-header">
     <div class="site-header-content">
@@ -22,7 +21,6 @@ AP//AAD//wAA4/MAAOPzAADj/wAA//8AAP//AAD//wAA" rel="icon" type="image/x-icon">
       
     </div>
   </header>
-
   <div class="site-content-container">
     <div class="site-content"><div>
   <article class="post">
@@ -42,8 +40,24 @@ AP//AAD//wAA4/MAAOPzAADj/wAA//8AAP//AAD//wAA" rel="icon" type="image/x-icon">
       <p>Example content</p>
     </section>
   </article>
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+        <time datetime="2019-12-12">
+          12 Dec 2019
+        </time>
+      </span>
+      <h2 class="post-title">
+        <a href="/hello">
+          Hello World
+        </a>
+      </h2>
+    </header>
+    <section class="post-content">
+      <p>First post</p>
+    </section>
+  </article>
 </div></div>
   </div>
-
 
 </body></html>

@@ -60,7 +60,7 @@ code {
 }
 
 .site-header-content {
-  height: 50px;
+  padding: 30px;
   display: flex;
   align-items: center;
   width: 90%;
@@ -100,11 +100,8 @@ code {
 }
 
 .post {
-  position: relative;
-  margin: 2.5rem auto;
-  padding-bottom: 3rem;
+  padding-bottom: 2rem;
   word-break: break-word;
-  hyphens: auto;
 }
 
 .post-content {
