@@ -1,4 +1,5 @@
 const cheerio = require('cheerio');
+const minify = require('html-minifier').minify;
 const CleanCSS = require('clean-css');
 const fs = require('fs');
 const path = require('path');
@@ -25,7 +26,28 @@ function buildPage(name) {
 
   $('.site-content').html(html);
 
-  fs.writeFileSync(path.join(buildDir, name), $.html());
+  fs.writeFileSync(
+    path.join(buildDir, name),
+    minify($.html(), {
+      collapseBooleanAttributes: true,
+      collapseInlineTagWhitespace: true,
+      collapseWhitespace: true,
+      minifyCSS: true,
+      minifyJS: true,
+      minifyURLs: true,
+      removeAttributeQuotes: true,
+      removeComments: true,
+      removeEmptyAttributes: true,
+      removeEmptyElements: true,
+      removeOptionalTags: true,
+      removeRedundantAttributes: true,
+      removeScriptTypeAttributes: true,
+      removeStyleLinkTypeAttributes: true,
+      sortAttributes: true,
+      sortClassName: true,
+      useShortDoctype: true
+    })
+  );
 }
 
 function buildCSS() {

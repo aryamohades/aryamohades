@@ -1,44 +1,6 @@
-<!DOCTYPE html><html><head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="base.css">
-  <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAA
+<!doctype html><meta charset=utf-8><meta content="ie=edge" http-equiv=x-ua-compatible><meta content="width=device-width,initial-scale=1,shrink-to-fit=no" name=viewport><link href=/favicon.ico rel=icon type=image/x-icon><link href=base.css rel=stylesheet><link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAA
 AAAAAAAAAAAA/4QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEREREAAAABERERERAAABEAAA
 AAEQABEAAAAAABABEAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAREAAAARAAABEQAAABEAAAERAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA//8AAP//AAD4BwAA8AMAAOf5AADP/QAAn/0A
-AP//AAD//wAA4/MAAOPzAADj/wAA//8AAP//AAD//wAA" rel="icon" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;display=swap" rel="stylesheet">
-</head>
-
-<body>
-  <header class="site-header">
-    <a href="/" class="site-title">
-      Makeshift Software
-    </a>
-    
-  </header>
-  <div class="site-content-container">
-    <div class="site-content"><div>
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-        <time datetime="2019-12-12">
-          12 Dec 2019
-        </time>
-      </span>
-      <h2 class="post-title">
-        Hello World
-      </h2>
-    </header>
-    <section class="post-content">
-      <p>Hi, this is my blog. This is my first post.</p>
-    </section>
-  </article>
-</div></div>
-  </div>
-
-
-</body></html>
+AP//AAD//wAA4/MAAOPzAADj/wAA//8AAP//AAD//wAA" rel=icon type=image/x-icon><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;display=swap" rel=stylesheet><header class=site-header><div class=site-header-content><a class=site-title href=/ >Makeshift Software</a></div></header><div class=site-content-container><div class=site-content><div><article class=post><header class=post-header><span class=post-meta><time datetime=2019-12-12>12 Dec 2019</time></span><h2 class=post-title>Hello World</h2></header><section class=post-content><p>Hi, this is my blog. This is my first post.</section></article></div></div></div>

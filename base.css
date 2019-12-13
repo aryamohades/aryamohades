@@ -56,9 +56,15 @@ code {
 }
 
 .site-header {
-  padding: 30px;
   display: flex;
+  justify-content: center;
+  display: flex;
+  justify-content: flex-start;
   margin-bottom: 2rem;
+}
+
+.site-header-content {
+  padding: 30px;
 }
 
 .site-title {
