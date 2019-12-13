@@ -93,6 +93,10 @@ code {
   .site-content {
     width: 90%;
   }
+
+  .site-header-content {
+    justify-content: center;
+  }
 }
 
 .post:first-child {
@@ -118,6 +122,10 @@ code {
 
 .post-title {
   margin: 0;
+}
+
+.post-description {
+  margin-top: 1rem;
 }
 
 .post-title a {

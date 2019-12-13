@@ -37,7 +37,7 @@ AP//AAD//wAA4/MAAOPzAADj/wAA//8AAP//AAD//wAA" rel="icon" type="image/x-icon">
       </h2>
     </header>
     <section class="post-content">
-      <p>Example content</p>
+      <p class="post-description">Example content</p>
     </section>
   </article>
   <article class="post">
@@ -54,7 +54,7 @@ AP//AAD//wAA4/MAAOPzAADj/wAA//8AAP//AAD//wAA" rel="icon" type="image/x-icon">
       </h2>
     </header>
     <section class="post-content">
-      <p>First post</p>
+      <p class="post-description">First post</p>
     </section>
   </article>
 </div></div>
