@@ -23,7 +23,9 @@ function buildPages(pages) {
 function buildPage(name) {
   const $ = cheerio.load(baseHtml);
   const html = readFile(name);
+  const css = buildCSS();
 
+  $('head').append(`<style>${css}</style>`);
   $('.site-content').html(html);
 
   fs.writeFileSync(
@@ -53,11 +55,9 @@ function buildPage(name) {
 function buildCSS() {
   const css = fs.readFileSync(path.join(__dirname, 'base.css'));
 
-  const output = new CleanCSS({
+  return new CleanCSS({
     level: 2
-  }).minify(css);
-
-  fs.writeFileSync(path.join(buildDir, 'base.css'), output.styles);
+  }).minify(css).styles;
 }
 
 function addHeaders() {
@@ -68,9 +68,6 @@ function addHeaders() {
 }
 
 console.log('building');
-
-// Build CSS
-buildCSS();
 
 // Build pages
 buildPages(getPages());
