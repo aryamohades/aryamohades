@@ -4,75 +4,120 @@ const CleanCSS = require('clean-css');
 const fs = require('fs');
 const path = require('path');
 
-const buildDir = path.join(__dirname, 'build');
+const outDir = path.join(__dirname, 'out');
 const pagesDir = path.join(__dirname, 'pages');
+const snippetsDir = path.join(__dirname, 'snippets');
 const baseHtml = fs.readFileSync(path.join(__dirname, 'base.html'));
+const postHtml = fs.readFileSync(path.join(__dirname, 'post.html'));
 
-function readFile(name) {
-  return fs.readFileSync(path.join(pagesDir, `${name}.html`));
+function buildCode($) {
+  $('code[data-snippet]').each((_, el) => {
+    const snippet = el.attribs['data-snippet'];
+    const code = fs.readFileSync(path.join(snippetsDir, snippet));
+    $(`code[data-snippet='${snippet}']`).html(code);
+  });
 }
 
-function getPages() {
-  return fs.readdirSync(pagesDir).map(name => name.split('.')[0]);
-}
-
-function buildPages(pages) {
-  pages.forEach(name => buildPage(name));
-}
-
-function buildPage(name) {
-  const $ = cheerio.load(baseHtml);
-  const html = readFile(name);
-  const css = buildCSS();
-
-  $('head').append(`<style>${css}</style>`);
-  $('.site-content').html(html);
-
-  fs.writeFileSync(
-    path.join(buildDir, name),
-    minify($.html(), {
-      collapseBooleanAttributes: true,
-      collapseInlineTagWhitespace: true,
-      collapseWhitespace: true,
-      minifyCSS: true,
-      minifyJS: true,
-      minifyURLs: true,
-      removeAttributeQuotes: true,
-      removeComments: true,
-      removeEmptyAttributes: true,
-      removeEmptyElements: true,
-      removeOptionalTags: true,
-      removeRedundantAttributes: true,
-      removeScriptTypeAttributes: true,
-      removeStyleLinkTypeAttributes: true,
-      sortAttributes: true,
-      sortClassName: true,
-      useShortDoctype: true
-    })
-  );
-}
-
-function buildCSS() {
+function buildCSS($) {
   const css = fs.readFileSync(path.join(__dirname, 'base.css'));
 
-  return new CleanCSS({
+  const styles = new CleanCSS({
     level: 2
   }).minify(css).styles;
+
+  $('head').append(`<style>${styles}</style>`);
 }
 
-function addHeaders() {
+function addHeaders(pages) {
+  let text = '';
+
+  text += '/\n\tContent-Type: text/html\n\n';
+
+  text += '/index\n\tContent-Type: text/html\n\n';
+
+  pages.forEach(page => {
+    text += `/${page.out}\n\tContent-Type: text/html\n\n`;
+  });
+
+  fs.writeFileSync(path.join(outDir, '_headers'), text);
+}
+
+function addPrism() {
   fs.copyFileSync(
-    path.join(__dirname, '_headers'),
-    path.join(buildDir, '_headers')
+    path.join(__dirname, 'prism.css'),
+    path.join(outDir, 'prism.css')
+  );
+
+  fs.copyFileSync(
+    path.join(__dirname, 'prism.js'),
+    path.join(outDir, 'prism.js')
   );
 }
 
-console.log('building');
+function minifyHtml(html) {
+  return minify(html, {
+    collapseBooleanAttributes: true,
+    collapseInlineTagWhitespace: true,
+    collapseWhitespace: true,
+    minifyCSS: true,
+    minifyJS: true,
+    minifyURLs: true,
+    removeAttributeQuotes: true,
+    removeComments: true,
+    removeEmptyAttributes: true,
+    removeEmptyElements: true,
+    removeOptionalTags: true,
+    removeRedundantAttributes: true,
+    removeScriptTypeAttributes: true,
+    removeStyleLinkTypeAttributes: true,
+    useShortDoctype: true
+  });
+}
 
-// Build pages
-buildPages(getPages());
+function buildIndex(pages) {
+  const $ = cheerio.load(baseHtml);
 
-// Add headers file
-addHeaders();
+  buildCSS($);
 
-console.log('done');
+  pages.reverse().forEach(page => {
+    const post$ = cheerio.load(postHtml);
+    post$('.post-title').html(`<a href="/${page.out}">${page.title}</a>`);
+    post$('.post-time').text(page.date);
+    post$('.post-description').text(page.description);
+    post$('.post-content').append(
+      `<p class="post-description">${page.description}</p>`
+    );
+    $('.site-content').append(post$.html());
+  });
+
+  fs.writeFileSync(path.join(outDir, 'index'), minifyHtml($.html()));
+}
+
+const pages = JSON.parse(fs.readFileSync(path.join(__dirname, 'pages.json')));
+
+addPrism();
+addHeaders(pages);
+buildIndex(pages);
+
+pages.forEach(page => {
+  const $ = cheerio.load(baseHtml);
+
+  if (page.code) {
+    $('head').append('<link rel="stylesheet" href="prism.css">');
+    $('head').append('<script defer src="prism.js">');
+  }
+
+  const pageHtml = fs.readFileSync(path.join(pagesDir, page.file));
+
+  $('.site-content').html(postHtml);
+  $('.post-content').html(pageHtml);
+  $('.post-time').text(page.date);
+  $('.post-title').text(page.title);
+
+  buildCSS($);
+  buildCode($);
+
+  const output = minifyHtml($.html());
+
+  fs.writeFileSync(path.join(outDir, page.out), output);
+});

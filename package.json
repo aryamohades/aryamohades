@@ -16,11 +16,12 @@
     "prettier": "^1.19.1"
   },
   "scripts": {
+    "prebuild": "pnpm run clean",
     "predev": "pnpm run build",
     "dev": "node dev.js",
-    "mkdir": "mkdirp build ",
+    "mkdir": "mkdirp out ",
     "build": "pnpm run mkdir && node build.js",
-    "clean": "rm -rf build",
+    "clean": "rm -rf out",
     "format": "prettier --write './**/*.js'",
     "lint": "eslint --config ./eslint.json src"
   },

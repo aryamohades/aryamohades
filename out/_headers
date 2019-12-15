@@ -4,11 +4,9 @@
 /index
 	Content-Type: text/html
 
-/base.css
-	Content-Type: text/css
-
 /hello
-  Content-Type: text/html
+	Content-Type: text/html
 
 /something-about-go
 	Content-Type: text/html
+
