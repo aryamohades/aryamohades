@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "title": "Makeshift Software",
+    "description": "programming,blog,makeshift software"
+  },
+  "pages": [
+    {
+      "file": "hello.html",
+      "out": "hello",
+      "title": "Hello World",
+      "description": "Hello",
+      "date": "12 Dec 2019",
+      "meta": {
+        "title": "Hello World",
+        "description": "hi,blog,makeshift software"
+      }
+    },
+    {
+      "file": "something-about-go.html",
+      "out": "something-about-go",
+      "code": true,
+      "title": "Example title",
+      "description": "Something about Go",
+      "date": "12 Dec 2019",
+      "meta": {
+        "title": "Something about Go",
+        "description": "go,golang,websockets,realtime,performance,optimization"
+      }
+    }
+  ]
+}

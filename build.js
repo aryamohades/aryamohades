@@ -26,14 +26,14 @@ function buildCSS($) {
   $('head').append(`<style>${output}</style>`);
 }
 
-function addHeaders(pages) {
+function addHeaders(config) {
   let text = '';
 
   text += '/\n\tContent-Type: text/html\n\n';
 
   text += '/index\n\tContent-Type: text/html\n\n';
 
-  pages.forEach(page => {
+  config.pages.forEach(page => {
     text += `/${page.out}\n\tContent-Type: text/html\n\n`;
   });
 
@@ -48,6 +48,13 @@ function addPrism() {
   fs.copyFileSync(
     path.join(__dirname, 'prism.js'),
     path.join(outDir, 'prism.js')
+  );
+}
+
+function addRobots() {
+  fs.copyFileSync(
+    path.join(__dirname, 'robots.txt'),
+    path.join(outDir, 'robots.txt')
   );
 }
 
@@ -77,12 +84,22 @@ function minifyCSS(css) {
   }).minify(css).styles;
 }
 
-function buildIndex(pages) {
+function buildIndex(config) {
   const $ = cheerio.load(baseHtml);
+
+  if (config.meta && config.meta.title) {
+    $('head').append(`<title>${config.meta.title}</title>`);
+  }
+
+  if (config.meta && config.meta.description) {
+    $('head').append(
+      `<meta name="description" content="${config.meta.description}" />`
+    );
+  }
 
   buildCSS($);
 
-  pages.reverse().forEach(page => {
+  config.pages.reverse().forEach(page => {
     const post$ = cheerio.load(postHtml);
     post$('.post-title').html(`<a href="/${page.out}">${page.title}</a>`);
     post$('.post-time').text(page.date);
@@ -96,13 +113,14 @@ function buildIndex(pages) {
   fs.writeFileSync(path.join(outDir, 'index'), minifyHtml($.html()));
 }
 
-const pages = JSON.parse(fs.readFileSync(path.join(__dirname, 'pages.json')));
+const config = JSON.parse(fs.readFileSync(path.join(__dirname, 'config.json')));
 
 addPrism();
-addHeaders(pages);
-buildIndex(pages);
+addRobots();
+addHeaders(config);
+buildIndex(config);
 
-pages.forEach(page => {
+config.pages.forEach(page => {
   const $ = cheerio.load(baseHtml);
 
   if (page.code) {
@@ -110,6 +128,16 @@ pages.forEach(page => {
       '<link rel="preload" href="prism.css" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">'
     );
     $('head').append('<script defer src="prism.js">');
+  }
+
+  if (page.meta && page.meta.title) {
+    $('head').append(`<title>${page.meta.title}</title>`);
+  }
+
+  if (page.meta && page.meta.description) {
+    $('head').append(
+      `<meta name="description" content="${page.meta.description}" />`
+    );
   }
 
   const pageHtml = fs.readFileSync(path.join(pagesDir, page.file));
