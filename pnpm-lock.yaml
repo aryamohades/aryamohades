@@ -4,7 +4,7 @@ dependencies:
   clean-css: 4.2.1
   eslint: 6.7.2
   eslint-config-prettier: 6.7.0_eslint@6.7.2
-  eslint-plugin-prettier: 3.1.1_eslint@6.7.2+prettier@1.19.1
+  eslint-plugin-prettier: 3.1.2_eslint@6.7.2+prettier@1.19.1
   express: 4.17.1
   html-minifier: 4.0.0
   husky: 3.1.0
@@ -185,7 +185,7 @@ packages:
   /ajv/6.10.2:
     dependencies:
       fast-deep-equal: 2.0.1
-      fast-json-stable-stringify: 2.0.0
+      fast-json-stable-stringify: 2.1.0
       json-schema-traverse: 0.4.1
       uri-js: 4.2.2
     dev: false
@@ -719,7 +719,7 @@ packages:
       eslint: '>=3.14.1'
     resolution:
       integrity: sha512-FamQVKM3jjUVwhG4hEMnbtsq7xOIDm+SY5iBPfR8gKsJoAB2IQnNF+bk1+8Fy44Nq7PPJaLvkRxILYdJWoguKQ==
-  /eslint-plugin-prettier/3.1.1_eslint@6.7.2+prettier@1.19.1:
+  /eslint-plugin-prettier/3.1.2_eslint@6.7.2+prettier@1.19.1:
     dependencies:
       eslint: 6.7.2
       prettier: 1.19.1
@@ -731,7 +731,7 @@ packages:
       eslint: '>= 5.0.0'
       prettier: '>= 1.13.0'
     resolution:
-      integrity: sha512-A+TZuHZ0KU0cnn56/9mfR7/KjUJ9QNVXUhwvRFSR7PGPe0zQR6PTkmyqg1AtUUEOzTqeRsUwyKFh0oVZKVCrtA==
+      integrity: sha512-GlolCC9y3XZfv3RQfwGew7NnuFDKsfI4lbvRK+PIIo23SFH+LemGs4cKwzAaRa+Mdb+lQO/STaIayno8T5sJJA==
   /eslint-scope/5.0.0:
     dependencies:
       esrecurse: 4.2.1
@@ -948,10 +948,10 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-nTCREpBY8w8r+boyFYAx21iL6faSsQynliPHM4Uf56SbkyohCNxpVPEH9xrF5TXKy+IsjkPUHDKiUkzBVRXn9g==
-  /fast-json-stable-stringify/2.0.0:
+  /fast-json-stable-stringify/2.1.0:
     dev: false
     resolution:
-      integrity: sha1-1RQsDK7msRifh9OnYREGT4bIu/I=
+      integrity: sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==
   /fast-levenshtein/2.0.6:
     dev: false
     resolution:
@@ -2632,7 +2632,7 @@ specifiers:
   clean-css: ^4.2.1
   eslint: ^6.7.2
   eslint-config-prettier: ^6.7.0
-  eslint-plugin-prettier: ^3.1.1
+  eslint-plugin-prettier: ^3.1.2
   express: ^4.17.1
   html-minifier: ^4.0.0
   husky: ^3.1.0

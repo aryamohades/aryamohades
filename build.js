@@ -21,11 +21,9 @@ function buildCode($) {
 function buildCSS($) {
   const css = fs.readFileSync(path.join(__dirname, 'base.css'));
 
-  const styles = new CleanCSS({
-    level: 2
-  }).minify(css).styles;
+  const output = minifyCSS(css);
 
-  $('head').append(`<style>${styles}</style>`);
+  $('head').append(`<style>${output}</style>`);
 }
 
 function addHeaders(pages) {
@@ -43,10 +41,9 @@ function addHeaders(pages) {
 }
 
 function addPrism() {
-  fs.copyFileSync(
-    path.join(__dirname, 'prism.css'),
-    path.join(outDir, 'prism.css')
-  );
+  const css = fs.readFileSync(path.join(__dirname, 'prism.css'));
+
+  fs.writeFileSync(path.join(outDir, 'prism.css'), minifyCSS(css));
 
   fs.copyFileSync(
     path.join(__dirname, 'prism.js'),
@@ -72,6 +69,12 @@ function minifyHtml(html) {
     removeStyleLinkTypeAttributes: true,
     useShortDoctype: true
   });
+}
+
+function minifyCSS(css) {
+  return new CleanCSS({
+    level: 2
+  }).minify(css).styles;
 }
 
 function buildIndex(pages) {
