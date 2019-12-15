@@ -103,7 +103,9 @@ pages.forEach(page => {
   const $ = cheerio.load(baseHtml);
 
   if (page.code) {
-    $('head').append('<link rel="stylesheet" href="prism.css">');
+    $('head').append(
+      '<link rel="preload" href="prism.css" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">'
+    );
     $('head').append('<script defer src="prism.js">');
   }
 
